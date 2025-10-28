@@ -1,0 +1,199 @@
+/* src/styles/index.css */
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -----------------------
+   Brand variables
+   ----------------------- */
+:root {
+  --bg-900: #0f1724;
+  --surface-800: #0b1220;
+  --surface-700: #111827;
+  --accent-primary: #00b4d8;
+  --accent-secondary: #ff7a59;
+  --muted: #9ca3af;
+  --text-primary: #e6eef3;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  /* sizes & radii */
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --card-padding: 1rem;
+}
+
+/* -----------------------
+   Base overrides
+   ----------------------- */
+html, body, #root {
+  height: 100%;
+  background: var(--bg-900);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+}
+
+/* Improve text rendering on mac/windows */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -----------------------
+   Utility components
+   ----------------------- */
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  box-shadow: 0 6px 20px rgba(3,7,18,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* Subtle glass-like panel */
+.panel-glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Primary and secondary variants */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-primary), #0077a3);
+  color: #031521;
+  box-shadow: 0 6px 18px rgba(0,180,216,0.12);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--text-primary);
+}
+
+/* Floating draggable control panels */
+.draggable {
+  position: absolute;
+  z-index: 60;
+  border-radius: 12px;
+  padding: 0.6rem;
+  min-width: 220px;
+  max-width: 420px;
+  cursor: grab;
+}
+.draggable:active { cursor: grabbing; }
+
+/* Small header for panels */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+.panel-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Canvas helpers */
+.sim-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(3,6,14,0.8), rgba(6,12,22,0.6));
+  overflow: hidden;
+}
+
+/* Streamlines / particle layer */
+.sim-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Gauges and small readouts */
+.readout {
+  background: rgba(0,0,0,0.35);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 86px;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.readout .label { font-size: 0.72rem; color: var(--muted); }
+.readout .value { font-weight: 700; font-size: 1rem; }
+
+/* Graph dock */
+.graph-dock {
+  background: linear-gradient(180deg, rgba(2,6,12,0.45), rgba(5,10,18,0.35));
+  border-top: 1px solid rgba(255,255,255,0.02);
+  padding: 0.75rem;
+}
+
+/* Tiny utility for muted text */
+.muted { color: var(--muted); }
+
+/* Focus visible outline for keyboard nav */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0,180,216,0.12), 0 2px 8px rgba(0,0,0,0.6);
+  border-radius: 8px;
+}
+
+/* Scrollbars (modern browsers) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Accessibility: reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* Small responsive tweaks */
+@media (max-width: 768px) {
+  .draggable { position: fixed; left: 12px; right: 12px; bottom: 12px; top: auto; }
+  aside { display: none; }
+}
+
+/* Prism / code highlighting fallback (if using docs) */
+pre[class*="language-"] {
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(3,6,14,0.5);
+  border: 1px solid rgba(255,255,255,0.02);
+  overflow: auto;
+}
