@@ -1,0 +1,49 @@
+{
+  "name": "flowforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FlowForge — Interactive Fluid Mechanics Lab & Virtual Experiments",
+  "author": "Pushpal Sanyal",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5173",
+    "lint": "eslint 'src/**/*.{js,ts,jsx,tsx}' --fix",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0",
+    "zustand": "^4.4.0",
+    "three": "^0.160.0",
+    "p5": "^1.6.0",
+    "chart.js": "^4.4.0",
+    "react-chartjs-2": "^5.2.0",
+    "tailwindcss": "^3.5.0",
+    "postcss": "^8.4.21",
+    "autoprefixer": "^10.4.13",
+    "framer-motion": "^10.12.6",
+    "clsx": "^1.2.1",
+    "axios": "^1.5.0",
+    "usehooks-ts": "^2.14.0"
+  },
+  "devDependencies": {
+    "vite": "^5.1.0",
+    "typescript": "^5.4.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^2.9.0",
+    "vitest": "^0.34.0",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.8",
+    "tailwindcss-fluid-type": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
